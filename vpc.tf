@@ -22,4 +22,16 @@ resource "aws_vpc" "Terraform_VPC" {      # You can replace "Terraform_VPC" as p
   tags = {
     Name = "Terraform VPC"
   }
+} # end resourc
+
+
+# create the Subnet. You can change the subnet name, CIDR, AZ, Tags etc as per your requirement.
+resource "aws_subnet" "Terraform_Subnet" {
+  vpc_id                  = aws_vpc.Terraform_VPC.id
+  cidr_block              = "10.10.10.0/24"
+  map_public_ip_on_launch = "true"
+  availability_zone       = "ap-south-1a"
+tags = {
+   Name = "Terraform Subnet"
+}
 } # end resource
